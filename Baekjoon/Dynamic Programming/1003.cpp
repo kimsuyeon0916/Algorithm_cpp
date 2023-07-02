@@ -24,6 +24,5 @@ int main(){
     } 
     cout << dp[0][input[t]] << " " << dp[1][input[t]] << endl;
   }
-
   return 0;
 }
