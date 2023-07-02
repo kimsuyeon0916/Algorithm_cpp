@@ -6,9 +6,7 @@ using namespace std;
 int dp[MAX_INPUT+1];
 
 int main(){
-  int n;
-  
-  cin >> n;
+  int n; cin >> n;
 
   //1->n 최소 연산 횟수로 만드는 걸로 생각
   dp[1]=0; //boudary condition
