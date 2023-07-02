@@ -5,13 +5,11 @@
 using namespace std;
 
 int input[MAX_INPUT]; //0 ~ 40
+int dp[2][41];
 
 int main(){
-  int n;
-  cin >> n;
+  int n; cin >> n;
   for(int t=0;t<n;t++) cin >> input[t];
-
-  int dp[2][41];
 
   dp[0][0]=1; dp[1][0]=0; //boudary conditions
   dp[0][1]=0; dp[1][1]=1;
