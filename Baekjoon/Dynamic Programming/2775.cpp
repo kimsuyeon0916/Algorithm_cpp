@@ -7,8 +7,7 @@ int dp[15][15];
 int input[MAX_INPUT][2];
 
 int main(){
-  int n;
-  cin >> n;
+  int n; cin >> n;
   for(int t=0;t<n;t++) cin >> input[t][0] >> input[t][1];
 
   for(int i=0;i<=14;i++){
