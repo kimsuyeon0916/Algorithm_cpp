@@ -4,9 +4,7 @@
 using namespace std;
 
 int main(){
-  int n;
-  int input[10];
-
+  int n; int input[10];
   cin >> n; //테스트 케이스 개수
   for(int t=0;t<n;t++) cin >> input[t];
   
