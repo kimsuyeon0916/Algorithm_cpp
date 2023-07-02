@@ -8,11 +8,9 @@ int dp[MAX_INPUT/3+1][MAX_INPUT+1]; //열을 채울 수 있는 필요한 봉지 
 
 int main()
 {
-  int n;
-  int result = MAX_INPUT; 
-
-  cin >> n;
+  int n; cin >> n;
   
+  int result = MAX_INPUT; 
   for(int i=0;i<=n/3;i++){
     dp[i][3*i]=i; //boundary condition
     for(int j=3*i+1;j<=n;j++){
