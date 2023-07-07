@@ -11,6 +11,7 @@ void init(){
 
 string input[2000001];
 queue<string> Queue;
+
 int main(){
   init();
   int n; cin >> n;
