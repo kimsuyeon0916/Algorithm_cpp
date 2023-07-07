@@ -9,15 +9,15 @@ void init(){
   cout.tie(0);
 }
 
-string input[10002];
+string input[10001];
 vector<string> stack;
 
 int main(){
   init();
-  int n; cin >> n;
-  for(int i=1;i<=n+1;i++) getline(cin, input[i]);
+  int n; cin >> n; cin.ignore();
+  for(int i=1;i<=n;i++) getline(cin, input[i]);
   
-  for(int i=1;i<=n+1;i++){
+  for(int i=1;i<=n;i++){
     if(input[i].substr(0,4)=="push") stack.emplace_back(input[i].substr(5));
     else if(input[i]=="pop"){
       if(stack.empty()) cout << "-1\n";
