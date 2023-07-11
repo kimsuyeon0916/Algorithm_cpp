@@ -28,7 +28,7 @@ int main() {
 int s = 0;
 void DFS(int v) {
     visited[v] = ++s;
-    for (int i=0;i<graph[v].size();i++) {
-      if(visited[graph[v][i]]==0) DFS(graph[v][i]);
+    for (int vertex : graph[v]) { //auto& vertex
+      if(visited[vertex]==0) DFS(vertex);
     }
 }
