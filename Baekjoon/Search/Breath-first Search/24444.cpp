@@ -30,17 +30,17 @@ int main()
   return 0;
 }
 
-int n=0;
+int s=0;
 void BFS(int start){
   q.emplace(start);
-  visited[start]=++n;
+  visited[start]=++s;
   while(!q.empty()){
     int cur=q.front();
     q.pop();
     for(int vertex : graph[cur]){
       if(!visited[vertex]){
         q.emplace(vertex);
-        visited[vertex]=++n;
+        visited[vertex]=++s;
       }
     }
   }
