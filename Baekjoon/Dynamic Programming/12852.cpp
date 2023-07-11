@@ -13,7 +13,6 @@ int main(){
 
   num[1]="1"; //boundary condition
   for(int i=2;i<=n;i++){
-    string x=to_string(i);
     dp[i]=dp[i-1]+1;
     num[i] = to_string(i) + " " + num[i-1];
     if(i%2==0){
