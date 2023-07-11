@@ -1,35 +1,47 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
+#define FASTIO ios::sync_with_stdio(false), cin.tie(0), cout.tie(0)
 
 using namespace std;
+vector<vector<vector<int>>> w(21,vector<vector<int>>(21,vector<int>(21)));
 
-vector<vector<int>> input; vector<int> v(3);
-vector<int> EOI = {-1,-1,-1};
-long long dp[101][101][101];
 
 int main(){
-  while(true){
-    cin >> v[0] >> v[1] >> v[2];
-    if(v == EOI) break;
-    else input.push_back(v);
-  }
-  
-  dp[70][70][70]=1048576; //boundary condition
-  for(long long i=0;i<=100;i++){
-    for(long long j=0;j<=100;j++){
-      for(long long k=0;k<=100;k++){
-        if(i<=50||j<=50||k<=50) dp[i][j][k]=1;
-        else if(i>70||j>70||k>70) dp[i][j][k]=dp[70][70][70];
-        else if(i<j && j<k) dp[i][j][k]=dp[i][j][k-1]+dp[i][j-1][k-1]-dp[i][j-1][k]; 
-        else dp[i][j][k]=dp[i-1][j][k]+dp[i-1][j-1][k]+dp[i-1][j][k-1]-dp[i-1][j-1][k-1]; 
-      }
-    }
-  }
+    FASTIO;
 
-  for(int i=0;i<input.size();i++){
-    cout << "w(" << input[i][0] << ", " << input[i][1] << ", " << input[i][2] << ") = ";
-    cout << dp[input[i][0]+50][input[i][1]+50][input[i][2]+50] << endl;
-  } 
-  return 0;
+    int a,b,c;
+    int res;
+    for(int i=0;i<21;i++){
+        for(int j=0;j<21;j++){
+            for(int k=0;k<21;k++){
+                if(i==0||j==0||k==0){
+                    w[i][j][k]=1;
+                }
+                else if(i<j&&j<k){
+                    w[i][j][k]=w[i][j][k-1]+w[i][j-1][k-1]-w[i][j-1][k];
+                }else{
+                    w[i][j][k]=w[i-1][j][k]+w[i-1][j-1][k]+w[i-1][j][k-1]-w[i-1][j-1][k-1];
+                }
+            }
+        }
+    }
+
+    while(true){
+        
+        cin>>a>>b>>c;
+        if(a==-1&&b==-1&&c==-1){
+            break;
+        }
+        cout<<"w("<<a<<", "<<b<<", "<<c<<") = ";
+        
+        if(a<=0||b<=0||c<=0){
+            cout<<w[0][0][0]<<'\n';
+        }
+        else if(a>20||b>20||c>20){
+            cout<<w[20][20][20]<<'\n';
+        }else{
+            cout<<w[a][b][c]<<'\n';
+        }
+    }
+    return 0;
 }
