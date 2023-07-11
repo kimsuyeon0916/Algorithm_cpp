@@ -1,39 +1,34 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
+#define FASTIO ios::sync_with_stdio(0), cin.tie(0), cout.tie(0)
 using namespace std;
 
-void DFS(int i);
-
-void init(){
-  ios::sync_with_stdio(false);
-  cin.tie(0);
-  cout.tie(0);
-}
+void DFS(int v);
 
 int n, m, r;
-vector<vector<int>> edge(n + 1, vector<int>(n + 1));
-bool visited[100001]={0,};
+vector<int> graph[100001]; //인접 리스트 이용
+int visited[100001]={0,};
+int main() {
+    FASTIO;
+    cin >> n >> m >> r;
+    int u, v;
+    for (int i = 1; i <= m; i++) {
+        cin >> u >> v;
+        graph[u].push_back(v);
+        graph[v].push_back(u);
+    }
+    for(int i=1;i<=n;i++) sort(graph[i].begin(),graph[i].end());
+    DFS(r);
 
-int main(){
-  init();
-  cin >> n >> m >> r;
-  int x, y;
-  for(int i=1;i<=m;i++){
-    cin >> x >> y;
-    edge[x][y]=1; edge[y][x]=1;
-  }
-
-  DFS(1);
-  return 0;
+    for (int i = 1; i <= n; i++) cout << visited[i] << '\n';
+    return 0;
 }
 
-void DFS(int i){
-  for(int j=1;j<=n;j++){
-    if(visited[j]==1) return;
-    else if(edge[i][j]==1 && visited[j]==0){
-      visited[j]=true;
-      cout << j << '\n';
-      DFS(j);
+int s = 0;
+void DFS(int v) {
+    visited[v] = ++s;
+    for (int i=0;i<graph[v].size();i++) {
+      if(visited[graph[v][i]]==0) DFS(graph[v][i]);
     }
-  }
 }
