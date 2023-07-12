@@ -9,7 +9,7 @@ void BFS(int start);
 
 vector<int> graph[101];
 bool visited[101]={0,};
-int num=-1;
+int num=0;
 int main()
 {
   FASTIO;
@@ -33,7 +33,6 @@ void BFS(int start){
   queue<int> q;
   q.emplace(start);
   visited[start]=true;
-  ++num;
   while (!q.empty()){
     int cur=q.front();
     q.pop();
