@@ -9,7 +9,7 @@ void BFS(int start);
 
 vector<int> graph[101];
 bool visited[101]={0,};
-int num=0;
+int num=-1;
 int main()
 {
   FASTIO;
@@ -36,11 +36,12 @@ void BFS(int start){
   while (!q.empty()){
     int cur=q.front();
     q.pop();
+    ++num; //원래 여기가 맞는 위치
     for(int v:graph[cur]){
       if(!visited[v]){
         q.emplace(v);
         visited[v]=true;
-        ++num;
+        //++num; //잘못된 위치
       }
     }
   }
