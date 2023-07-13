@@ -1,51 +1,42 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <string>
 #include <queue>
-#include <bitset>
 #define FASTIO ios::sync_with_stdio(false), cin.tie(0), cout.tie(0)
 using namespace std;
 
-void DFS(int v); //DFS 풀이
-void BFS(int start); //BFS 풀이
+//Flood Fill 이용해서 리팩토링
+void DFS(int x, int y); //DFS 풀이
+void BFS(int x, int y); //BFS 풀이
 
-vector<int> graph[625]; //0~24
-bool visited[625]={0,};
+int board[25][25]; //인접 행렬 이용
+bool visited[25][25]={0,};
+int dx[4]={1,-1,0,0};
+int dy[4]={0,0,-1,1};
 vector<int> result;
+int N;
 int c=0;
 int main()
 {
   FASTIO;
-  int N; cin >> N;
-  vector<vector<bool>> m(N,vector<bool>(N));
+  cin >> N;
   for(int i=0;i<N;i++){
     string input; cin >> input;
-    bitset<25> bits(input);
     for(int j=0;j<N;j++){
-      m[i][j]=bits[(N-1)-j];
-      if(i>0){
-        if((m[i][j]&m[i-1][j])==1){
-          graph[i*N+j].emplace_back((i-1)*N+j);
-          graph[(i-1)*N+j].emplace_back(i*N+j);
-        }
-      }
-      if(j>0){
-        if((m[i][j]&m[i][j-1])==1){
-          graph[i*N+j].emplace_back(i*N+(j-1));
-          graph[i*N+(j-1)].emplace_back(i*N+j);
-        }
-      }
+      board[i][j]=input[j]-'0'; //char* to int
     }
   }
 
-  for(int i=0;i<N*N;i++) sort(graph[i].begin(), graph[i].end());
-  for(int i=0;i<N*N;i++){
-    if(m[i/N][i%N]==1 && !visited[i]){
-      c=0;
-      //DFS(i);
-      BFS(i);
-      result.emplace_back(c);
-    } 
+  for(int i=0;i<N;i++){
+    for(int j=0;j<N;j++){
+      if(board[i][j]==1 && !visited[i][j]){
+        c=0;
+        DFS(i,j);
+        //BFS(i,j);
+        result.emplace_back(c);
+      }
+    }
   }
   sort(result.begin(),result.end());
   
@@ -54,27 +45,33 @@ int main()
   return 0;
 }
 
-void DFS(int v){
-  visited[v]=true;
+void DFS(int x, int y){
+  visited[x][y]=true;
   ++c;
-  for(int vertex : graph[v]){
-    if(!visited[vertex]) DFS(vertex);
+  for(int i=0;i<4;i++){
+    int nx=x+dx[i];
+    int ny=y+dy[i];
+    if(nx>=0 && ny>=0 && nx<N && ny<N && board[nx][ny]==1 && !visited[nx][ny])
+      DFS(nx,ny);
   }
 }
 
-void BFS(int start){
-  queue<int> q;
-  q.emplace(start);
-  visited[start]=true;
+void BFS(int x, int y){
+  queue<pair<int,int>> q;
+  q.emplace(make_pair(x,y));
+  visited[x][y]=true;
   c=0;
   while(!q.empty()){
-    int cur=q.front();
+    pair<int,int> cur=q.front();
     q.pop();
     ++c;
-    for(int vertex : graph[cur]){
-      if(!visited[vertex])
-        q.emplace(vertex);
-        visited[vertex]=true;
+    for(int i=0;i<4;i++){
+      int nx=cur.first+dx[i];
+      int ny=cur.second+dy[i];
+      if(nx>=0 && ny>=0 && nx<N && ny<N && board[nx][ny]==1 && !visited[nx][ny]){
+        q.emplace(make_pair(nx,ny));
+        visited[nx][ny]=true;
       }
     }
+  }
 }
