@@ -33,7 +33,7 @@ void BFS(int x){
     int cur=q.front();
     q.pop();
     for(int i=0;i<3;i++){
-      int nx=(i!=2?cur+dx[i]:dx[i]*cur);
+      int nx=(i!=2 ? cur+dx[i] : dx[i]*cur);
       if(nx>=0 && nx<=100000 && !visited[nx]){ //처음에 여기 nx<=100000 등호 안들어가서 틀림
         q.emplace(nx);
         visited[nx]=true;
