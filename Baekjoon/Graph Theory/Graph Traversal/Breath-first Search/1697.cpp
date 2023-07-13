@@ -5,7 +5,7 @@
 #define FASTIO ios::sync_with_stdio(false), cin.tie(0), cout.tie(0)
 using namespace std;
 
-//Flood Fill 문제(1차원 배열)
+//Flood Fill 문제(1차원 배열)+BFS(최단거리 문제)
 
 void BFS(int x);
 
