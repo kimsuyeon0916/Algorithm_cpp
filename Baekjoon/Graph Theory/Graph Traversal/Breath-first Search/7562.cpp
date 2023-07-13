@@ -42,7 +42,7 @@ void BFS(int x, int y){
       int nx=cur.first+dx[i];
       int ny=cur.second+dy[i];
       if(nx>=0 && ny>=0 && nx<l && ny<l && !visited[nx][ny]){
-        q.emplace(make_pair(nx,ny));
+        q.emplace(make_pair(nx,ny)); //q.emplace({nx,ny});
         visited[nx][ny]=true;
         dist[nx][ny]=dist[cur.first][cur.second]+1;
       }
