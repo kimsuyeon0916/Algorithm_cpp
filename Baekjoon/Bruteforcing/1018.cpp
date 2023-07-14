@@ -5,7 +5,6 @@
 using namespace std;
 
 char board[50][50];
-//vector<string> chess = {"WBWBWBWB","BWBWBWBW"};
 string chess1="WBWBWBWB";
 string chess2="BWBWBWBW";
 int main()
