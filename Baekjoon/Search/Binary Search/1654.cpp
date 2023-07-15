@@ -9,11 +9,11 @@ int main()
 {
   FASTIO;
   cin >> K >> N;
-  vector<int> lan(K);
+  vector<long long> lan(K);
   for(int i=0;i<K;i++) cin >> lan[i];
-  sort(lan.begin(),lan.end());
+  sort(lan.begin(),lan.end()); //정렬
   low = 1, high = lan[K-1];
-  while(low <= high){
+  while(low <= high){ //이분 탐색의 조건문
     mid = (low+high)/ 2;
     int count=0;
     for(int i=0;i<K;i++){
@@ -21,7 +21,7 @@ int main()
     }
     if(count>=N){
       low=mid+1;
-      ans=max(ans,mid);
+      ans=max(ans,mid); //더 긴 길이로도 만들 수 있는지 검사
     } 
     else high=mid-1;
   }
