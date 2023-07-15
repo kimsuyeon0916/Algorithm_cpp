@@ -9,45 +9,39 @@ using namespace std;
 
 void BFS(int start);
 
-vector<int  > graph(100); //사다리+뱀 (어차피 최대 1개라서, 그냥 벡터로만 해도 충분)
-bool visited[100]={0,};
-int dist[100]={0,};
+//0부터 시작할지, 1부터 시작할 지는 문제에 따라 다르니까 유연하게 설정
+int graph[101]; //사다리+뱀+나머지 (어차피 최대 1개라서, 그냥 1차원 배열로 해도 충분)
+int dist[101]={0,};
 int N, M, res=0;
 int main()
 {
   FASTIO;
   int c=1;
   cin >> N >> M;
-  int x,y,u,v;
-  for(int i=0;i<100;i++) graph[i]=i; //자기 자신 -> 자기 자신(이게 핵심)
-  for(int i=1;i<=N;i++){
+  int x,y;
+  for(int i=1;i<=100;i++) graph[i]=i; //자기 자신 -> 자기 자신(이게 핵심;이미 문제에 주어진 힌트)
+  for(int i=1;i<=N+M;i++){
     cin >> x >> y;
-    graph[x-1]=y-1;
-  }
-  for(int i=1;i<=M;i++){
-    cin >> u >> v;
-    graph[u-1]=v-1;
+    graph[x]=y;
   }
 
-  BFS(0);
+  BFS(1);
 
-  cout << dist[99];
+  cout << dist[100];
   return 0;
 }
 
 void BFS(int start){
   queue<int> q;
   q.emplace(start);
-  visited[start]=true;
   while (!q.empty()){
     int cur=q.front();
     q.pop();
     for(int i=1;i<=6;i++){
       int v=cur+i;
-      if(v<100) v=graph[v];
-      if(v<100 && !visited[v]){
+      if(v<=100) v=graph[v]; //조건문 안넣으면 인덱스 에러 날 수 있음
+      if(v<=100 && dist[v]==0){
         q.emplace(v);
-        visited[v]=true;
         dist[v]=dist[cur]+1;
       }
     }
