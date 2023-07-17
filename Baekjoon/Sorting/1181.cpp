@@ -9,19 +9,21 @@ bool comp(string s1, string s2){
   return s1.length()<s2.length(); //기본은 길이 오름차순 정렬
 }
 
-vector<string> v;
+string str[20000];
 int main()
 {
   FASTIO;
   int N; cin >> N;
   string input;
   for(int i=0;i<N;i++){
-    cin >> input;
-    if(find(v.begin(), v.end(), input)==v.end()) v.emplace_back(input);
+    cin >> str[i];
   }
 
-  sort(v.begin(), v.end(),comp); 
-  
-  for(string str:v) cout << str << '\n';
+  sort(str, str+N, comp); 
+
+  for(int i=0;i<N;i++){
+    if(i>0 && str[i]==str[i-1]) continue;
+    cout << str[i] << '\n';
+  } 
   return 0;
 }
