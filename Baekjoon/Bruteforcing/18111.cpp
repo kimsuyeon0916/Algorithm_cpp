@@ -27,9 +27,7 @@ int main()
         else if(board[i][j]<k) s2+=k-board[i][j];
       }
     }
-
-    if(k==0) time=2*s1+s2;
-
+    
     if(B-s2+s1>=0){ //그러나 최대조건도 확인을 해야 함.
       if(2*s1+s2<time){
         time=2*s1+s2;
