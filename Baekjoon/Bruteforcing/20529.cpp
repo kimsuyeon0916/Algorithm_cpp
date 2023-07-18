@@ -5,6 +5,7 @@
 using namespace std;
 
 string mbti[100000];
+
 int main()
 {
   FASTIO;
