@@ -16,9 +16,9 @@ int main()
 
     int min_dist=12;
     vector<int> dist;
-    for(int i=0;i<N;i++){
-      for(int j=i+1;j<N;j++){
-        for(int s=j+1;s<N;s++){
+    for(int i=0;i<N && min_dist!=0;i++){ //min_dist==0; 종료 조건
+      for(int j=i+1;j<N && min_dist!=0;j++){
+        for(int s=j+1;s<N && min_dist!=0;s++){
           int dist=0;
           for(int k=0;k<4;k++){
             if(mbti[i].substr(k,1)!=mbti[j].substr(k,1)) dist++;
@@ -26,11 +26,8 @@ int main()
             if(mbti[s].substr(k,1)!=mbti[i].substr(k,1)) dist++;
           }
           min_dist=min(min_dist,dist);
-          if(min_dist==0) break; //종료 조건만 추가했더니 바로 통과됨..
         }
-        if(min_dist==0) break;
       }
-      if(min_dist==0) break;
     }
 
     cout << min_dist << '\n';
