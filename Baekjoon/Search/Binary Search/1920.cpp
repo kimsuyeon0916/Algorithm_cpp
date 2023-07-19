@@ -25,6 +25,7 @@ int main()
       else high=mid-1;
     }
     cout << res <<'\n';
+    //cout << binary_search(v.begin(), v.end(), input) << '\n'; //STL 사용
   }
   return 0;
 }
