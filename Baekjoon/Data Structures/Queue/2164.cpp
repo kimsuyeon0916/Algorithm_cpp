@@ -15,8 +15,8 @@ int main()
 
   while(q.size()>=2){ //카드의 위가, 큐의 맨 앞. 카드의 아래가, 큐의 맨 뒤
     q.pop();
-    int c=q.front(); q.pop();
-    q.emplace(c);
+    q.emplace(q.front());
+    q.pop();
   }
 
   cout << q.front();
