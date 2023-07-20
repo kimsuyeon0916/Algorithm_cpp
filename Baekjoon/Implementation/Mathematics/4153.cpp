@@ -9,10 +9,9 @@ int main()
 {
   FASTIO;
   vector<int> tri(3);
-  vector<int> end(3); //EOI
   while(true){
     cin >> tri[0] >> tri[1] >> tri[2];
-    if(tri==end) return 0; //종료 조건
+    if(!(tri[0]+tri[1]+tri[2])) return 0; //EOI
 
     sort(tri.begin(),tri.end());
 
