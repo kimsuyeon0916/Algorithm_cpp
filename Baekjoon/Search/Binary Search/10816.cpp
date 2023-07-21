@@ -15,7 +15,7 @@ int main()
   for(int i=0;i<M;i++){
     int x;  cin >> x;
     int count=0;
-    count=equal_range(v.begin(),v.end(),x).second-equal_range(v.begin(),v.end(),x).first;
+    count=upper_bound(v.begin(),v.end(),x)-lower_bound(v.begin(),v.end(),x);
     cout << count << " ";
   }
   return 0;
