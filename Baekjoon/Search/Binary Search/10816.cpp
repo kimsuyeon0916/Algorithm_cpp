@@ -18,6 +18,5 @@ int main()
     count=equal_range(v.begin(),v.end(),x).second-equal_range(v.begin(),v.end(),x).first;
     cout << count << " ";
   }
-  
   return 0;
 }
