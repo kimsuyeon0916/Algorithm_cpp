@@ -12,17 +12,16 @@ int main()
 
   queue<int> q;
   for(int i=1;i<=N;i++) q.emplace(i);
-  int i=1;
+  int i=0;
   cout << '<';
   while(!q.empty()){
-    if(i==K){
+    if(++i==K){
       i=0;
       cout << q.front();
       if(i<q.size()-1) cout << ", " ;
     }
     else q.emplace(q.front());
     q.pop();
-    i++;
   }
   cout << '>';
   return 0;
