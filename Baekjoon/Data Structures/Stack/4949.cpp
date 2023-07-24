@@ -9,41 +9,28 @@ int main()
 {
   FASTIO;
   string input;
-  while(getline(cin,input,'.')){ //'.' 이전까지의 문자열(한 줄)을 str에 통째로 입력받음
-    cin.ignore();
+  while(getline(cin,input) && input!="."){ //'.' 이전까지의 문자열(한 줄)을 str에 통째로 입력받음
     stack<char> s; //왼쪽 괄호만 들어있는 스택
     string result="yes";
     for(char c:input){
       if(c=='['||c=='(') s.emplace(c);
       else if(c==')'){
-        if(s.empty()){
+        if(!s.empty() && s.top()=='(') s.pop();
+        else{
           result="no";
           break;
-        }
-        else{
-          if(s.top()=='(') s.pop();
-          else{
-            result="no";
-            break;
-          }
-        }
+        } 
       }
       else if(c==']'){
-        if(s.empty()){
+        if(!s.empty() && s.top()=='[') s.pop();
+        else{
           result="no";
           break;
-        }
-        else{
-          if(s.top()=='[') s.pop();
-          else{
-            result="no";
-            break;
-          }
         }
       }
     }
     if(!s.empty()) result="no";
-    if(input.size()) cout << result << '\n'; //.은 제외
+    cout << result << '\n'; //.은 제외
   }
   return 0;
 }
