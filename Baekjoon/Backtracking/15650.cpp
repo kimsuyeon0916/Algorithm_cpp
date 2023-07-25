@@ -5,7 +5,6 @@
 using namespace std;
 
 int N, M;
-bool visited[9];
 int num[9];
 
 void Backtraking(int n, int depth){
@@ -15,12 +14,8 @@ void Backtraking(int n, int depth){
     return;
   }
   for(int i=n;i<=N;i++){
-    if(!visited[i]){
-      visited[i]=true;
-      num[depth]=i;
-      Backtraking(i,depth+1);
-      visited[i]=false;
-    }
+    num[depth]=i;
+    Backtraking(i+1,depth+1); //오름차순이므로 i+1, 굳이 visited 방문 필요 X 어차피 증가하는 순
   }
 }
 
