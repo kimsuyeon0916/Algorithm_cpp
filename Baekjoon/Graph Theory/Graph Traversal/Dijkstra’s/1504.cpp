@@ -10,7 +10,7 @@ int N,E;
 vector<pair<int,int>> graph[801];
 int dist[801];
 
-void dijkstra(int start){
+int dijkstra(int start, int end){ //인자 변형
   fill_n(dist,N+1,INF); //초기화
   priority_queue<pair<int,int>, vector<pair<int,int>>, greater<>> pq;
   pq.emplace(make_pair(0,start));
@@ -26,6 +26,7 @@ void dijkstra(int start){
       }
     }
   }
+  return dist[end];
 }
 
 int main()
@@ -40,21 +41,8 @@ int main()
   }
   int u,v; cin >> u >> v;
 
-
-  int res1=0,res2=0;
-  
-  dijkstra(1);
-  res1+=dist[u]; //1->u
-  res2+=dist[v]; //1->v
-
-  dijkstra(v);
-  res2+=dist[u]; //1->v + v->u
-  res1+=dist[N]; //1->u + v->N
-
-  dijkstra(u);
-  res1+=dist[v]; //1->u + v->N + u->v => 1->u->v->N
-  res2+=dist[N]; //1->v + v->u + u->N => 1->v->u->N
-  
+  int res1=dijkstra(1,u)+dijkstra(u,v)+dijkstra(v,N); //1->u->v->N
+  int res2=dijkstra(1,v)+dijkstra(v,u)+dijkstra(u,N); //1->v->u->N
   int min_dist=min(res1,res2);
   cout << (min_dist<INF ? min_dist : -1);
   return 0;
