@@ -22,9 +22,9 @@ bool promising(pair<int,int> rc, int i){
 
 void Backtracking(pair<int,int> rc){
   blank.pop_back();
-  for(int i=1;i<=9;i++){
+  for(int i=1;i<=9;i++){ //처음에 promising 안에 넣었다가, 그럼 처음 호출한 인자는 백트래킹이 안되서 바꿈
     if(promising(rc,i)){
-      if(blank.empty()){
+      if(blank.empty()){ //blank.size()로도 조건 줄 수 있음.
         for(int i=1;i<=9;i++){
           for(int j=1;j<=9;j++) cout << board[i][j] << ' ';
           cout << '\n';
@@ -33,8 +33,8 @@ void Backtracking(pair<int,int> rc){
       } 
       pair<int,int> cur=blank.back(); //변수 선언 해놔야함
       Backtracking(cur);  
-      blank.emplace_back(cur);
-      board[cur.first][cur.second]=0;
+      blank.emplace_back(cur); //굳이 안빼고, 그냥 벡터 앞부터 뒤까지 인덱스로도 관리 가능
+      board[cur.first][cur.second]=0; //아니면 원복
     } 
   }
 }
