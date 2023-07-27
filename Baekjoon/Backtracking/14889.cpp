@@ -6,7 +6,7 @@ using namespace std;
 
 int N,diff=2000;
 int board[21][21];
-int selected[21];
+bool selected[21];
 int t1[21];
 int t2[21];
 
