@@ -13,7 +13,7 @@ bool cmp(pair<int,int> a, pair<int,int> b){
 int main() {
   FASTIO;
   int N; cin >> N; 
-  int max_end = 0, max_cnt = 0;
+  int max_cnt = 0;
   vector<pair<int,int>> period;
   for (int i = 0; i < N; i++) {
     int s, e; cin >> s >> e;
