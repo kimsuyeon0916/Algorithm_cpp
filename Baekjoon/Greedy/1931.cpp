@@ -16,9 +16,8 @@ int main() {
     period.emplace_back(make_pair(e,s)); //뒤집어서 넣음
   }
   sort(period.begin(), period.end());
-  int cnt = 1;
-  int next=period[0].first;
-  for(int idx=1;idx<N;idx++){
+  int cnt = 0, next=0;
+  for(int idx=0;idx<N;idx++){
     if(period[idx].second>=next){ //같지 않을 수 있음
       ++cnt;
       next=period[idx].first;
