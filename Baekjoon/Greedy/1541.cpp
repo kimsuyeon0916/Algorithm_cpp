@@ -7,19 +7,16 @@ using namespace std;
 int main()
 {
   FASTIO;
-  int n;
+  int n=0,sum;
   char c;
-  cin >> n;
-  int part=0, minus_cnt=0, sum=n; //part는 부분합을 의미하는 변수
+  bool flag=true;
+  cin >> sum;
   while(cin >> c >> n){ //EOI
-    if(c=='-'){
-      if(!minus_cnt) sum+=part; //-가 처음 나온 경우
-      else sum-=part; //-가 2번 이상 나온 경우
-      ++minus_cnt;
-      part=0;
-    } 
-    part+=n;
+    if(c=='-') flag=false;
+    
+    if(flag) sum+=n;
+    else sum-=n;
   }
-  cout << (minus_cnt ? sum-part : sum+part); //마지막 부분합을 처리
+  cout << sum;
   return 0;
 }
