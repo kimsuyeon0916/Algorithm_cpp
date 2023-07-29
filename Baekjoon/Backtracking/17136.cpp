@@ -12,17 +12,10 @@ bool promising(int idx, int size) {
   for (int i = v[idx].first; i < v[idx].first + size; i++) {
     for (int j = v[idx].second; j < v[idx].second + size; j++) {
       if (i >= 10 || j >= 10 || !paper[i][j]) return false;
+      paper[i][j]=0;
     }
   }
   return true;
-}
-
-void cover(int idx, int size, int value) {
-  for (int i = v[idx].first; i < v[idx].first + size; i++) {
-    for (int j = v[idx].second; j < v[idx].second + size; j++) {
-      paper[i][j] = value;
-    }
-  }
 }
 
 void Backtracking(int idx) {
@@ -30,17 +23,18 @@ void Backtracking(int idx) {
     min_cnt = min(min_cnt, cnt);
     return;
   } 
+  bool p[10][10]; //지역 변수로 저장
+	copy(&paper[0][0], &paper[0][0]+100, &p[0][0]); 
   if (paper[v[idx].first][v[idx].second]) {
-    for (int i = 1; i <= 5; i++) {
+    for (int i = 5; i >= 1; i--) {
       if (pcnt[i - 1] > 0 && promising(idx, i)) {
         ++cnt; 
         --pcnt[i - 1];
-        cover(idx, i, 0);
         Backtracking(idx + 1);
         ++pcnt[i - 1];
         --cnt;
-        cover(idx, i, 1);
       }
+			copy(&p[0][0], &p[0][0]+100, &paper[0][0]); //원복
     }
   }
   else Backtracking(idx + 1);
