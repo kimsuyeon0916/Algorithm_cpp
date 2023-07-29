@@ -23,6 +23,7 @@ void Backtracking(int idx) {
     min_cnt = min(min_cnt, cnt);
     return;
   } 
+  if(cnt>=min_cnt) return;
   bool p[10][10]; //지역 변수로 저장
 	copy(&paper[0][0], &paper[0][0]+100, &p[0][0]); 
   if (paper[v[idx].first][v[idx].second]) {
@@ -36,7 +37,7 @@ void Backtracking(int idx) {
       }
 			copy(&p[0][0], &p[0][0]+100, &paper[0][0]); //원복
     }
-  }
+  } 
   else Backtracking(idx + 1);
 }
 
