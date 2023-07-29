@@ -5,27 +5,23 @@
 #define FASTIO ios::sync_with_stdio(false), cin.tie(0), cout.tie(0)
 using namespace std;
 
-bool cmp(pair<int,int> a, pair<int,int> b){
-  if(a.second==b.second) return a.first < b.first; //오름차순
-  return a.second < b.second; //오름차순
-}
+vector<pair<int,int>> period;
 
 int main() {
   FASTIO;
   int N; cin >> N; 
   int max_cnt = 0;
-  vector<pair<int,int>> period;
   for (int i = 0; i < N; i++) {
     int s, e; cin >> s >> e;
-    period.emplace_back(make_pair(s,e));
+    period.emplace_back(make_pair(e,s)); //뒤집어서 넣음
   }
-  sort(period.begin(), period.end(),cmp);
+  sort(period.begin(), period.end());
   int cnt = 1;
-  int next=period[0].second;
+  int next=period[0].first;
   for(int idx=1;idx<N;idx++){
-    if(period[idx].first>=next){ //같지 않을 수 있음
+    if(period[idx].second>=next){ //같지 않을 수 있음
       ++cnt;
-      next=period[idx].second;
+      next=period[idx].first;
     } 
   }
   cout << cnt;
