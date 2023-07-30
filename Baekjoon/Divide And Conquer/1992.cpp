@@ -22,11 +22,8 @@ bool divide(pair<int,int> v, int size){
 void quad_tree(pair<int,int> v, int size){
   if(divide(v,size)){
     cout << '(';
-    int dx[4]={0,0,size/2,size/2};
-    int dy[4]={0,size/2,0,size/2};
-    for(int i=0;i<4;i++){
-      quad_tree({v.first+dx[i],v.second+dy[i]},size/2);
-    }
+    //for문 1개로 정사각형 배열 채우는 공식 알아냄ㅋ
+    for(int i=0;i<4;i++) quad_tree({v.first+(i/2)*(size/2),v.second+(i%2)*(size/2)},size/2);
     cout << ')';
   }
 }
