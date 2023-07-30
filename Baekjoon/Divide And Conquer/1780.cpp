@@ -21,10 +21,8 @@ bool divide(pair<int,int> v,int size){
 
 void matrix(pair<int,int> v,int size){
   if(divide(v,size)){
-    for(int i=0;i<3;i++){ //dx, dy없이 정사각형 시작 좌표 생성
-      for(int j=0;j<3;j++){
-        matrix({v.first+i*(size/3),v.second+j*(size/3)},size/3);
-      }
+    for(int i=0;i<9;i++){ //dx, dy없이 정사각형 시작 좌표 생성
+      matrix({v.first+(i/3)*(size/3),v.second+(i%3)*(size/3)},size/3);
     }
   }
 }
