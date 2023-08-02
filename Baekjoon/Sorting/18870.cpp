@@ -21,8 +21,8 @@ int main()
   for(int i=1;i<=N;i++){ //N번째 인덱스 포함
     bool flag=false;
     if(v[i-1].first<v[i].first) flag=true;
-    v[i-1].first=v[i-1].second; //입력 순서
-    v[i-1].second=(flag ? rank++ : rank); //크기 별 인덱스
+    v[i-1].first=v[i-1].second; //원소 크기 -> 입력 순서
+    v[i-1].second=(flag ? rank++ : rank); //입력 순서 -> 크기 별 인덱스
   }
   sort(v.begin(),v.end()-1); //입력 순서 순 정렬
   
