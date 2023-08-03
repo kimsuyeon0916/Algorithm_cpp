@@ -19,7 +19,7 @@ int main()
   for(int i=1;i<=M;i++){
     string input; cin >> input;
     if(isdigit(input[0])) cout << i_s[stoi(input)] << '\n';
-    else cout << s_i[input] << '\n';
+    else cout << s_i[input] << '\n'; //s_i.find(input)->second 
   }
   return 0;
 }
