@@ -9,13 +9,12 @@ int main()
 {
   FASTIO;
   int N, M; cin >> N >> M;
-  map<int,string> i_s;
-  map<string,int> s_i;
+  map<int,string> i_s; //int to string
+  map<string,int> s_i; //string to int
   for(int i=1;i<=N;i++){
-    string input;
-    cin >> input;
-    i_s.insert({i,input});
-    s_i.insert({input,i});
+    string input; cin >> input;
+    i_s.insert({i,input}); //emplace(i,input)
+    s_i.insert({input,i}); //emplace(input,i)
   } 
   for(int i=1;i<=M;i++){
     string input; cin >> input;
