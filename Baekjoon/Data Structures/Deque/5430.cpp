@@ -39,7 +39,7 @@ int main()
     if(error) cout << "error" << '\n';
     else{
       cout << '[';
-      int size=dq.size();
+      int size=dq.size(); //백업해줘야함(이유:꺼내면서 사이즈 바뀜)
       for(int i=0;i<size;i++){
         if(flag){
           cout << dq.back();
