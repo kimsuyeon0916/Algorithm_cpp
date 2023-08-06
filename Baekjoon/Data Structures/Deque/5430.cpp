@@ -20,6 +20,7 @@ int main()
       if(i<n-1) cin >> c; //',' 읽기
     }
     cin >> c; //']' 읽기
+
     bool flag=false, error=false;
     for(char ch:func){
       if(ch=='R') flag=!flag;
@@ -34,6 +35,7 @@ int main()
         }
       }
     }
+
     if(error) cout << "error" << '\n';
     else{
       cout << '[';
