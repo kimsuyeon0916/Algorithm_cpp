@@ -37,7 +37,7 @@ int main()
   
   for(int i=1;i<=N;i++) sort(graph[i].begin(), graph[i].end());
   for(int i=1;i<=N;i++){
-    fill_n(dist,101,0);
+    fill_n(dist,101,0); //fill(dist,dist+101,0);
     BFS(i);
   }
 
