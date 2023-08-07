@@ -24,7 +24,7 @@ int main()
     }
     if(M<=sum){ 
       low=mid+1; //높이 크게 지정 => sum 작아짐
-      res=max(res,mid); //계속 갱신 시켜주는 방식
+      res=max(res,mid); //계속 갱신 시켜주는 방식(max 아니어도, 이 조건 마지막으로 통과하는 값이 최대 res)
     } 
     else high=mid-1; //높이 낮게 지정 => sum 커짐
   }
