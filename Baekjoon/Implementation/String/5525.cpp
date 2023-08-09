@@ -7,17 +7,17 @@ using namespace std;
 int main()
 {
   FASTIO;
-  int N, M, res=0; //res는 초기화 안해주면 틀림
+  int N, M, res=0; 
   string input;
   cin >> N >> M >> input;
   for(int i=1;i<input.size();i++){
-    int count=0;
+    int count=0; //IOI의 개수
     if(input[i-1]=='I'){
       while(input[i]=='O' && input[i+1]=='I'){
-        i+=2;
+        i+=2; //인덱스 뛰어 넘기
         ++count;
         if(count==N){
-          --count;
+          --count; //오른쪽으로 +2만큼 이동할텐데 이때 k값이 바뀌지 않게 하나 빼줌
           ++res;
         }
       }
