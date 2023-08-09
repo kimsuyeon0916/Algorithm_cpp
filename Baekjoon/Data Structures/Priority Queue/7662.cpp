@@ -41,8 +41,8 @@ int main()
         } 
       }
     }
-    while(!max_q.empty() && !repeat[max_q.top()]) max_q.pop(); //뽑기 전 동기화
-    while(!min_q.empty() && !repeat[min_q.top()]) min_q.pop(); //뽑기 전 동기화
+    while(!max_q.empty() && !repeat[max_q.top()]) max_q.pop(); //동기화
+    while(!min_q.empty() && !repeat[min_q.top()]) min_q.pop(); //동기화
     if(max_q.empty()||min_q.empty()) cout<<"EMPTY\n";
     else cout << max_q.top() << ' ' << min_q.top() << '\n';
   }
