@@ -10,7 +10,7 @@ int main()
 {
   FASTIO;
   int n; cin >> n;
-  dp[1]=1; dp[2]=3; //boundary
+  dp[1]=1; dp[2]=3; //boundary condition
   for(int i=3;i<=n;i++){
     dp[i]=(dp[i-1])%10007+(2*dp[i-2])%10007;
   }
