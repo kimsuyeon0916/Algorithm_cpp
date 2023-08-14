@@ -10,7 +10,7 @@ int main()
 {
   FASTIO;
   int n,m; cin >> n >> m;
-  fill_n(&dist[0][0],101*101,1e9);
+  fill_n(&dist[0][0],101*101,1e9); //2차원 벡터로 바로 초기화해도 좋았을 듯
   for(int i=1;i<=m;i++){
     int a, b, c;
     cin >> a >> b >> c;
