@@ -9,13 +9,13 @@ int N, M;
 bool visited[8];
 vector<int> v; //입력받은 숫자 벡터
 vector<int> res;
-set<vector<int> > s; //결과 수열(근데 왜 >>에서 한 칸 띄고 > > 해야 하는지 잘 모르겠음..)
+set<vector<int>> s; //결과 수열
 
 void BackTracking(int depth){
   if(depth == M){
-    if(s.find(res)==s.end()){ //중복되지 않는 경우
+    if(s.find(res) == s.end()){ //중복되지 않는 경우
       s.insert(res);
-      for(int i=0;i<res.size();i++) cout << res[i] << ' '; //처음엔 range-based for loop 사용
+      for(int i=0;i<res.size();i++) cout << res[i] << ' '; 
       cout << '\n';
     }
     return;
