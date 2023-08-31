@@ -1,18 +1,18 @@
 #include <iostream>
-#include <vector>
+#include <map>
 #include <algorithm>
 #include <queue>
 #define FASTIO ios::sync_with_stdio(false), cin.tie(0)
 using namespace std;
 
-vector<int> dist(1000000001,-1);
+map<int, int> dist;
 int A, B; 
 
 void BFS(int start){
   queue<int> q;
   q.emplace(start);
   while(!q.empty()){
-    int cur=q.front();
+    long long cur=q.front(); //나중에 연산하고 범위가 넘어가는 경우가 존재하므로 long long 으로 해줘야 함
     q.pop();
     if(cur==B) return;
     if(cur*2<=B){
@@ -25,12 +25,12 @@ void BFS(int start){
     }
   }
 }
-// 2 4 21 8 41 42 16 81 82 84 32 161 162
+
 int main()
 {
   FASTIO;
   cin >> A >> B;
   BFS(A);
-  cout << dist[B]+2;
+  cout << (dist[B]==0 ? -1 : dist[B]+1);
   return 0;
 }
