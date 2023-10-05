@@ -41,7 +41,7 @@ int main()
   dp[1][1]=1; //boundary condition
   for(int i=1;i<=N;i++){
     for(int j=1;j<=N;j++){
-      if(!board[i][j]) continue; //갈 수 있는 거리가 0인 경우, 여기서 더 이상 경로 존재 X => dp[i][j]==0
+      if(i==N && j==N) continue; //갈 수 있는 거리가 0인 경우(for 시간 단축 + 마지막 결과 덧셈 잘못 방지)
       for(int k=0;k<2;k++){
       int nx=i+board[i][j]*dx[k];
       int ny=j+board[i][j]*dy[k];
